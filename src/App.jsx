@@ -16,6 +16,7 @@ function App() {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
 
   const nextStep = () => setCurrentStep((prev) => prev + 1);
   const prevStep = () => setCurrentStep((prev) => prev - 1);
@@ -37,6 +38,8 @@ function App() {
               <Step1Personal
                 formData={formData}
                 setFormData={setFormData}
+                errors={errors}
+                setErrors={setErrors}
                 nextStep={nextStep}
               />
             )}
@@ -45,6 +48,8 @@ function App() {
               <Step2Account
                 formData={formData}
                 setFormData={setFormData}
+                errors={errors}
+                setErrors={setErrors}
                 nextStep={nextStep}
                 prevStep={prevStep}
               />
