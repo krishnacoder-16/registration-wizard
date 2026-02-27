@@ -3,6 +3,7 @@ import Step1Personal from "./components/steps/Step1Personal";
 import Step2Account from "./components/steps/Step2Account";
 import Step3Review from "./components/steps/Step3Review";
 import SuccessScreen from "./components/SuccessScreen";
+import ProgressBar from "./components/ProgressBar";
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -16,6 +17,7 @@ function App() {
     password: "",
     confirmPassword: "",
   });
+
   const [errors, setErrors] = useState({});
 
   const nextStep = () => setCurrentStep((prev) => prev + 1);
@@ -29,6 +31,10 @@ function App() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6">
+
+        {!isSubmitted && (
+          <ProgressBar currentStep={currentStep} totalSteps={3} />
+        )}
 
         {isSubmitted ? (
           <SuccessScreen />
@@ -64,7 +70,6 @@ function App() {
             )}
           </>
         )}
-
       </div>
     </div>
   );
